@@ -1,0 +1,113 @@
+% !TEX TS-program = xelatex
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=1.0cm,bottom=1.0cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{setspace}
+% Line spacing by fit level (exporter retries tighter levels until one page).
+<% set f = fit|default(0) %>\setstretch{<< [1.0, 0.95, 0.9, 0.9][f] >>}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{german}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+
+\graphicspath{{<< project_root >>/}}
+
+\definecolor{accent}{HTML}{1A3A5C}
+\definecolor{muted}{HTML}{555555}
+
+\setmainfont{<< font >>}
+\hypersetup{colorlinks=true, urlcolor=accent}
+
+\setlist[itemize]{leftmargin=12pt,topsep=1pt,itemsep=1pt,parsep=0pt,label={\color{accent}\textbullet}}
+
+\titleformat{\section}
+  {\color{accent}\large\bfseries}
+  {}{0pt}{}[\vspace{-3pt}{\color{accent}\rule{\textwidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{<< [6, 4, 3, 3][f] >>pt}{2pt}
+
+\pagestyle{empty}
+% Page breaks only between paragraphs/items, never inside one, no lone lines.
+\interlinepenalty=10000
+\clubpenalty=10000
+\widowpenalty=10000
+\setlength{\parindent}{0pt}
+
+\newcommand{\contactitem}[2]{\textcolor{accent}{#1}~#2}
+
+\begin{document}
+
+% ===== HEADER — text in flow; photo absolute via shipout/background hook =====
+<% if has_photo %>\AddToHookNext{shipout/background}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % fixed 2.6 x 3.0 cm frame: any portrait photo is scaled to the frame width and
+    % cropped from the bottom, so the face (upper part of the photo) stays visible
+    \begin{scope}
+      \clip ([xshift=-4.1cm]current page.north east) rectangle ([xshift=-1.5cm, yshift=-3.0cm]current page.north east);
+      \node[anchor=north east, inner sep=0pt]
+        at ([xshift=-1.5cm]current page.north east)
+        {\includegraphics[width=2.6cm]{assets/photo.png}};
+    \end{scope}
+  \end{tikzpicture}%
+}<% endif %>
+
+\begin{minipage}{0.72\textwidth}
+{\fontsize{26pt}{28pt}\selectfont\bfseries\color{accent}<< kontakt.surname_display | e >>}\\[1pt]
+{\small\color{muted}<< kontakt.name | e >>}<% if "headline" in kontakt %>\\[2pt]
+{\small\bfseries\color{accent}<< kontakt.headline | e >>}<% endif %>
+\end{minipage}
+
+\vspace{2pt}
+{\color{accent}\rule{\textwidth}{1.0pt}}
+\vspace{-10pt}
+
+% ===== CONTACT BAR =====
+\footnotesize
+\contactitem{\faMapMarker*}{<< kontakt.address | e >>}<% if "dob" in kontakt %> \quad
+\contactitem{\faBirthdayCake}{<< kontakt.dob | e >>}<% endif %>\\[2pt]
+\contactitem{\faEnvelope}{\href{mailto:<< kontakt.email >>}{<< kontakt.email | e >>}} \quad
+\contactitem{\faPhone*}{<< kontakt.phone | e >>} \quad
+<% if "github_url" in kontakt %>\contactitem{\faGithub}{\href{<< kontakt.github_url >>}{<< kontakt.github | e >>}} \quad<% endif %>
+<% if "linkedin_url" in kontakt %>\contactitem{\faLinkedin}{\href{<< kontakt.linkedin_url >>}{<< kontakt.name | e >>}}<% endif %>
+\normalsize<% if f >= 3 %>\fontsize{9.5pt}{11.4pt}\selectfont<% endif %>
+
+% ===== PROFILE =====
+\section*{Profile}
+<< profil | e >>
+
+% ===== SKILLS =====
+\section*{Skills}
+{\small << kenntnisse | labeled_lines >>}
+
+% ===== EXPERIENCE =====
+<% if experiences %>\section*{Experience}
+<% for exp in experiences %>
+\needspace{4\baselineskip}
+{\bfseries << exp.company | e >>}<% if exp.dates %> \hfill {\color{muted}\small <% if exp.location %><< exp.location | e >> · <% endif %><< exp.dates | e >>}<% endif %>\\
+<% if exp.role %>{\itshape << exp.role | e >>}<% endif %>
+\vspace{2pt}
+<< exp.bullets | bullets >>
+\vspace{2pt}
+<% endfor %><% endif %>
+
+% ===== EDUCATION =====
+<% if ausbildung %>\section*{Education}
+<< ausbildung | bullets_bold >>
+<% endif %>
+
+% ===== PROJECTS =====
+\section*{Projects}
+<< projekte | bullets_bold >>
+
+% ===== LANGUAGES (inline, 1 line) =====
+<% if sprachen %>\section*{Languages}
+<< sprachen | inline_bullets >>
+<% endif %>
+
+\end{document}

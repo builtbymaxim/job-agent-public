@@ -1,0 +1,112 @@
+% !TEX TS-program = xelatex
+\documentclass[11pt,a4paper]{article}
+% DIN 5008 Form B. Margins: left 25 mm, right 20 mm. The letterhead, the window
+% address field, the dateline and the fold marks are placed at absolute page
+% coordinates (tikz overlay), so their position never depends on content length.
+%   Letterhead            top 12 mm, right-aligned, must end above 45 mm
+%   Return address line   bottom of the Vermerkzone, just above 62.7 mm
+%   Address zone          x 25 mm (20 mm field + 5 mm inset), 62.7-90 mm, width 80 mm
+%   Dateline              right-aligned at the right margin, ending at 90 mm
+%   Subject               starts at 98.46 mm (flow text)
+%   Fold marks            105 mm and 210 mm, punch mark 148.5 mm
+\usepackage[top=20mm,bottom=18mm,left=25mm,right=20mm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\setotherlanguage{english}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{<< project_root >>/}}
+
+\definecolor{accent}{HTML}{1A3A5C}
+\definecolor{muted}{HTML}{555555}
+
+\setmainfont{<< font >>}
+\hypersetup{colorlinks=true, urlcolor=accent}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+% Never leave a single line of a paragraph alone at a page edge.
+\clubpenalty=10000
+\widowpenalty=10000
+
+\newcommand{\contactitem}[2]{\textcolor{accent}{#1}~#2}
+\newcommand{\pageat}[2]{($(current page.north west)+(#1,-#2)$)}
+
+\begin{document}
+
+% ===== Fixed DIN 5008 elements (first page only) =====
+\AddToHookNext{shipout/background}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % decorative accent bars, top + bottom
+    \fill[black] ([yshift=-0.4cm]current page.north west) rectangle ++(7cm,0.25cm);
+    \fill[black] ([yshift=-0.4cm,xshift=-7cm]current page.north east) rectangle ++(7cm,0.25cm);
+    \draw[gray!50,line width=0.4pt] ([yshift=-0.55cm,xshift=2cm]current page.north west) -- ++(17cm,0);
+    \fill[black] ([yshift=0.4cm]current page.south west) rectangle ++(7cm,-0.25cm);
+    \fill[black] ([yshift=0.4cm,xshift=-7cm]current page.south east) rectangle ++(7cm,-0.25cm);
+    \draw[gray!50,line width=0.4pt] ([yshift=0.55cm,xshift=2cm]current page.south west) -- ++(17cm,0);
+    % fold marks (105 / 210 mm) and punch mark (148.5 mm)
+    \draw[gray!60,line width=0.3pt] \pageat{4mm}{105mm} -- ++(5mm,0);
+    \draw[gray!60,line width=0.3pt] \pageat{4mm}{210mm} -- ++(5mm,0);
+    \draw[gray!60,line width=0.3pt] \pageat{4mm}{148.5mm} -- ++(3mm,0);
+
+    % letterhead (sender), right-aligned
+    \node[anchor=north east, inner sep=0pt, align=right, font=\small]
+      at ($(current page.north east)+(-20mm,-12mm)$) {%
+      {\Large\bfseries\color{accent}\MakeUppercase{<< kontakt.name | e >>}}\\[3pt]
+      << kontakt.address | e >>\\
+      \contactitem{\faEnvelope}{\href{mailto:<< kontakt.email >>}{<< kontakt.email | e >>}}\\
+      \contactitem{\faPhone*}{<< kontakt.phone | e >>}<% if "linkedin_url" in kontakt %>\\
+      \contactitem{\faLinkedin}{\href{<< kontakt.linkedin_url >>}{<< kontakt.linkedin | e >>}}<% endif %>};
+
+    % return address line (shows in the envelope window)
+    \node[anchor=south west, inner sep=0pt, font=\fontsize{7}{8}\selectfont\color{muted}]
+      at \pageat{25mm}{61.5mm} {<< kontakt.name | e >> · << kontakt.address | e >>};
+
+    % recipient address zone
+    \node[anchor=north west, inner sep=0pt, text width=80mm, align=left, font=\small]
+      at \pageat{25mm}{63.5mm} {%
+<% if recipient %>      {\bfseries << company | e >>}\\
+      << recipient | address >><% else %>      {\bfseries << company | e >>}\\
+      Personalabteilung<% endif %>};
+
+    % dateline
+    \node[anchor=base east, inner sep=0pt]
+      at ($(current page.north east)+(-20mm,-89mm)$) {<< date | e >>};
+  \end{tikzpicture}%
+}
+
+% ===== Flow text: subject starts at 98.46 mm =====
+% Body size by fit level (exporter retries tighter levels until one page): 11 / 10.5 / 10 pt (DIN minimum).
+<% set f = fit|default(0) %>\fontsize{<< [11, 10.5, 10, 10][f] >>pt}{<< [13.6, 13, 12.4, 12.4][f] >>pt}\selectfont
+\vspace*{70.5mm}
+{\bfseries\color{accent}<< subject | e >>}
+
+\vspace{\baselineskip}
+<< salutation | e >>
+
+<< para1 | e >>
+
+<< para2 | e >>
+
+<< para3 | e >>
+
+<< para4 | e >>
+
+% ===== Closing: kept together with signature and name =====
+\begin{minipage}{\textwidth}
+\vspace{2pt}
+Mit freundlichen Grüßen\\[1mm]
+<% if has_signature %>\includegraphics[height=13mm, width=55mm, keepaspectratio]{assets/signature.png}<% else %>\rule{0pt}{13mm}<% endif %>\\[1mm]
+{\bfseries\color{accent}<< kontakt.name | e >>}
+\end{minipage}
+
+\vspace{0.5\baselineskip}
+{\small Anlage: Lebenslauf}
+
+\end{document}

@@ -1,0 +1,35 @@
+# Keep secrets, PII, and bulk out of the image layers (mounted at runtime instead).
+.git
+.gitignore
+.env
+.env.*
+*.key
+
+# Personal profile + assets (PII) — only the example template is safe to bake in.
+profile_*.md
+!profile.example.md
+assets/photo.png
+assets/signature.png
+
+# Local state + output
+applications/
+applications.json
+seen_jobs.json
+deferred_jobs.json
+run_log.json
+profile_review.json
+
+# Python / tooling cruft
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated PDFs + scratch
+*.pdf
+19-06-*.md
+.vscode/
+.idea/

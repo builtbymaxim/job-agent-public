@@ -1,0 +1,5 @@
+# Keep LF line endings on every platform (Windows checkouts included): the
+# container and LaTeX expect them.
+* text=auto eol=lf
+*.png binary
+*.pdf binary

@@ -1,0 +1,18 @@
+# Run the pipeline in a container with the heavy TeX/Python runtime baked in.
+# The whole project dir is mounted at /app, so your profile, assets, config, .env,
+# and the applications/ output all live on the host (local-first) while the image
+# only provides the environment.
+#
+#   docker compose build
+#   docker compose run --rm job-agent                 # full pipeline (python run.py)
+#   docker compose run --rm job-agent run.py --paste  # direct apply
+#   docker compose run --rm job-agent run_tracker.py  # CRM
+services:
+  job-agent:
+    build: .
+    image: job-agent
+    env_file: .env            # GEMINI_API_KEY=...
+    stdin_open: true          # interactive prompts (job selection, accept/reject, [e]dit)
+    tty: true
+    volumes:
+      - .:/app                # code + profile + assets + state + output, all on the host

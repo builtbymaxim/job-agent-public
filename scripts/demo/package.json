@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Renders recorded demo sessions (scripts/demo/render.py) with xterm.js",
+  "dependencies": {
+    "@xterm/xterm": "5.5.0"
+  }
+}

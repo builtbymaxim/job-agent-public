@@ -1,0 +1,55 @@
+# Environment & secrets
+.env
+.env.*
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Application output (personal/sensitive)
+applications/
+applications.json
+# Timestamped backups of the tracker carry the same application data and notes.
+applications.json.bak-*
+seen_jobs.json
+profile_review.json
+run_log.json
+deferred_jobs.json
+
+# Personal profile (contains PII) — only profile.example.md is tracked
+profile_*.md
+!profile.example.md
+
+# Personal assets (portrait photo + handwritten signature — PII). Each user
+# supplies their own; the LaTeX templates reference these paths locally.
+assets/photo.png
+assets/signature.png
+
+# Generated PDFs
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Demo recording tooling (scripts/demo: npm install)
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

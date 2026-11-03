@@ -1,0 +1,59 @@
+# LaTeX template routing — picked per draft language (JobLanguage value).
+templates:
+  de:
+    cv: "cv/eu_de.tex"
+    cl: "cl/eu_de.tex"
+  en:
+    cv: "cv/eu_en.tex"
+    cl: "cl/eu_en.tex"
+
+# Your personal profile (gitignored). Create it with:  cp profile.example.md profile_me.md
+profile: "profile_me.md"
+
+# Job market the prompts are written for (writer, HR reviewer, interview coach).
+market: "Austrian/European"
+
+# Per-task model tiering. Keep `review` on a DIFFERENT model than `writing`:
+# a model grading its own output is systematically lenient, and a reviewer
+# weaker than the writer cannot catch the writer's mistakes.
+models:
+  bulk: "gemini-3.5-flash-lite"   # job scoring + single-posting parsing (high volume, cheap)
+  writing: "gemini-3.6-flash"     # CV sections + cover letter
+  review: "gemini-3.5-flash"      # HR review — separate model, strong reasoner
+
+# HR review loop calibration.
+hr_review:
+  pass_score: 7   # min CV and CL score (0-10) to accept without a rewrite
+  max_loops: 2    # max review -> rewrite iterations
+
+# Gemini call pacing. With billing enabled, keep this low (~1s) for fast runs.
+# Raise it if you see transient 429s on a throttled/free project.
+gemini:
+  rpm_delay: 1    # seconds between API calls
+
+# LaTeX main font. Default suits macOS; the Docker image overrides this with
+# JOB_AGENT_FONT="TeX Gyre Heros" (a Helvetica-metric font installed in the image).
+latex:
+  font: "Helvetica Neue"
+
+# Nudge to confirm the profile is still current if it hasn't been edited or
+# confirmed within this many days (interactive runs only).
+profile_review_days: 30
+
+# Edit for your own field and city: keywords, location and Indeed country.
+search:
+  platforms:
+    - "indeed"
+    - "linkedin"
+  country_indeed: "Austria"
+  keyword_groups:
+    - "Data Analyst, Business Intelligence, Reporting"
+    - "Business Analyst, Controlling, Analytics"
+  location: "Wien, Austria"
+  results_wanted: 15
+  hours_old: 168
+  max_jobs: 20
+  min_match_score: 0.60
+
+# Relative to the repo root (see run.py). Keep it portable — no absolute paths.
+output_dir: "applications"

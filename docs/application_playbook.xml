@@ -1,0 +1,224 @@
+<!--
+Application playbook for a business-informatics / data profile targeting DACH
+banking, consulting, AI and BI roles. Reference material for writer.py prompt
+design and template iteration; adapt it to your own field.
+
+Not every recommendation is implemented — some items are intentionally deferred
+(photo, signature, appending certificates, a dynamic per-job headline).
+-->
+<playbook>
+  <meta>
+    <title>Wirtschaftsinformatik Application Playbook 2025/2026</title>
+    <version>1.0</version>
+    <language>de</language>
+    <scope>CV, Cover Letter / Motivationsschreiben, ATS/KI-Anpassung für DACH &amp; internationale Bewerbungen (Banking, Consulting, AI, BI/Analytics)</scope>
+  </meta>
+
+  <section id="grundprinzipien">
+    <title>Grundprinzipien</title>
+    <content><![CDATA[
+- Ein erstklassiger CV und ein starkes CL müssen zwei Dinge leisten:
+  - 1) sauber von ATS/KI-Systemen geparst werden,
+  - 2) Recruitern & Führungskräften dein Fachprofil und deinen Impact in Sekunden zeigen.
+- "Character" entsteht primär über Inhalt, Klarheit und Relevanz, nicht über aufwendiges Design.
+- WINF-Profil ist ein Vorteil, wenn es als Brücke zwischen Tech (Python, SQL, BI, AI) und Business-Impact (Zeit/Geld gespart, Risiken reduziert, Umsatz) verkauft wird.
+    ]]></content>
+  </section>
+
+  <section id="cv_struktur">
+    <title>CV-Struktur (DACH-Variante für WINF)</title>
+    <content><![CDATA[
+Empfohlene Reihenfolge für Wirtschaftsinformatik-Student:in / -Absolvent:in mit Data/AI/Finance/Consulting-Fokus:
+
+1. Header
+- Name
+- Zielrollen-Headline (z. B. "B.Sc. Wirtschaftsinformatik | Data & Analytics | Python · SQL · Power BI")
+- Kontaktdaten: Telefon, professionelle E-Mail, Stadt + Land
+- Links: LinkedIn, GitHub, ggf. Portfolio
+- DACH: professionelles Foto (4,5×6 cm) oben rechts; international: kein Foto.
+
+2. Kurzprofil / Summary (3-4 Zeilen)
+- Studiengang + Uni + Abschlusszeitpunkt
+- Fokusfelder (z. B. Data Science, BI, AI/LLM, Finance)
+- 2-3 Kerntechnologien (Python, SQL, Power BI, Azure etc.)
+- Zielrichtung
+
+3. Ausbildung / Education (reverse-chronologisch)
+- Abschluss, Hochschule, Ort, Zeitraum
+- Bachelorarbeit: Titel + 1 Zeile zu Methode & Business-Kontext
+- 3-5 relevante Lehrveranstaltungen
+
+4. Berufserfahrung / Practical Experience
+- Praktika, Werkstudenten, relevante Jobs, reverse-chronologisch
+- Pro Station 3-5 Bullets nach XYZ-Formel
+- Fokus auf Data/BI/IT-nahen Aufgaben, Reporting, Projekterfahrung, Stakeholderkontakt
+
+5. Projekte / Projects (obligatorisch für WINF)
+- 2-4 Projekte mit Data/AI/BI/Process-Themen
+- Pro Projekt: Kontext, Stack, Problem, lösungsorientierter Impact (KPIs)
+
+6. Technische Skills / IT-Kenntnisse
+- In Kategorien gruppieren (siehe separaten Abschnitt "Skills-Struktur")
+
+7. Sprachen
+- Deutsch, Englisch, weitere Sprachen mit CEFR-Niveau (C2, C1, B2)
+
+8. Engagement / Leadership (optional, aber stark für Consulting/Banking)
+    ]]></content>
+  </section>
+
+  <section id="cv_laenge_format">
+    <title>CV-Länge und Layout</title>
+    <content><![CDATA[
+Länge:
+- Studierende / Absolvent:innen <3 Jahre Berufserfahrung:
+  - International/Top-Tier (MBB, IB, AI-Firmen): strikt 1 Seite
+  - Klassische DACH-Unternehmen: 1-2 Seiten, 1 Seite ideal
+
+Layout (ATS-sicher):
+- Einspaltiges Layout (Single Column); keine Tabellen, Textboxen, verschachtelten Spalten
+- Standard-Überschriften: "Education", "Experience", "Projects", "Skills", "Languages", "Certifications"
+- Dateiformat: PDF mit auswählbarem Text
+- Keine inhaltlich wichtigen Texte in Header/Footer
+
+Typografie:
+- Fonts: Calibri, Arial, Helvetica, Aptos, Georgia, Cambria, Garamond, Times New Roman
+- Fließtext: 10-11pt, Abschnittsüberschriften: 12-14pt, Name: 18-22pt
+- Zeilenabstand: 1,0-1,15; zwischen Sektionen 0,4-0,6 cm Abstand
+- Seitenränder: 1,5-2,0 cm rundherum
+
+Farben & Design:
+- Eine dezente Akzentfarbe (Navy, dunkles Grün, Petrol, Bordeaux) für Name, Überschriften
+- Hoher Kontrast (dunkler Text auf weißem Hintergrund)
+- Icons (Telefon, Mail) nur, wenn die Daten zusätzlich als normaler Text vorkommen
+- Skill-Balken, Logos und Diagramme möglichst weglassen (Parsing-Risiko)
+    ]]></content>
+  </section>
+
+  <section id="bullets_xyz">
+    <title>Bullet-Points &amp; Quantifizierung (XYZ-Formel)</title>
+    <content><![CDATA[
+Formel: "Accomplished X by doing Y, measured by Z"
+
+Beispiele:
+- Schlecht: "Verantwortlich für Reporting."
+- Gut: "Aufbau eines Power-BI-Dashboards mit 12 KPIs für 50+ Stakeholder (Sales & Management); Reduktion der Reporting-Zeit von 6h auf 1h/Woche."
+
+Quantifizierungs-Ideen (WINF):
+- Zeit: Stunden/Woche, %-Zeitreduktion
+- Geld: € Einsparung, € Umsatz, Volumen, Budget-Größe
+- Umfang: Anzahl Datensätze, Anzahl Nutzer, Anzahl Dashboards
+- Qualität: Genauigkeit in %, Fehlerreduktion, NPS, Nutzungsrate
+- Team/Scope: Anzahl betreuter Stakeholder, Abteilungen, Länder
+
+Anwendung:
+- Pro Erfahrung & Projekt 3-6 Bullets mit Action-Verb + Tool/Stack + Business-Kontext + quantifiziertem Impact
+- Erster Bullet des aktuellsten Jobs ist der wichtigste auf der gesamten Seite
+    ]]></content>
+  </section>
+
+  <section id="skills_struktur">
+    <title>Skills-Struktur für WINF (Tech &amp; Business)</title>
+    <content><![CDATA[
+Empfohlene Struktur (4-6 saubere Kategorien, NICHT 30 Skills ungeordnet):
+
+- Programming & Data: Python (pandas, scikit-learn, FastAPI), R, SQL (PostgreSQL, MS SQL)
+- BI, Reporting & Data Management: Power BI (DAX, Datenmodellierung), Tableau/Qlik, ETL/ELT
+- GenAI, ML & Analytics: Regression, Klassifikation, Clustering, Forecasting; LLM-Tooling (OpenAI API, LangChain, RAG, Prompt Engineering)
+- Cloud & Infrastruktur: Azure Basics (AZ-900), AWS/GCP Basics, Git/GitHub
+- Business & Methods: Prozessmodellierung (BPMN/Signavio), Projektmanagement (Scrum/Kanban), Controlling/Finance Basics
+- Soft Skills (max. 3-5): Analytisches Denken, Stakeholder-Kommunikation, strukturierte Problemlösung
+
+Regeln:
+- Nur Technologien auflisten, die durch Projekte/Erfahrung belegbar sind
+- AI/GenAI-Begriffe nur, wenn im Gespräch erklärbar
+    ]]></content>
+  </section>
+
+  <section id="branchenfokus">
+    <title>Branchenspezifische Anpassung (Bank/Finance, AI-Firmen, Consulting)</title>
+    <content><![CDATA[
+Banken / Finance:
+- Betonung: Reporting & BI, Genauigkeit, Regulatorik/ESG, Finanzprodukt-Verständnis
+- Keywords: Financial Reporting, Risk/Controlling, Regulatory Reporting, Liquidity, VaR, Stresstesting, IFRS, Basel, SQL für Reporting, Excel-Modelle
+- Projekte: KPI-Forecasts, Risikomodelle, Liquidity-Monitoring, ESG/NLP
+
+AI-Firmen / Data-Produkte:
+- Betonung: Data-Pipelines, Modellierung, Evaluation, produktnahes Denken
+- Keywords: Machine Learning, MLOps Basics, ETL, APIs, LLMs/GenAI, RAG, Vektordatenbanken, Prompt Engineering
+- Projekte: Prediction-Modelle, NLP/Textklassifikation, LLM-gestützte Automatisierung
+
+Consulting (IT/Strategy/Analytics):
+- Betonung: analytische Schärfe, Struktur, Präsentationsfähigkeit, Branchenbreite
+- Keywords: Business Analysis, Stakeholder Management, Workshops, Process Mining, Cost-Benefit-Analysen, Storytelling
+    ]]></content>
+  </section>
+
+  <section id="cover_letter">
+    <title>Cover Letter / Motivationsschreiben Playbook</title>
+    <content><![CDATA[
+Ziel: 250-400 Wörter, 1 Seite. Rolle/Firma spezifisch statt generisch. Ergänzt den CV, wiederholt ihn nicht.
+
+Struktur:
+1. Hook (1-2 Sätze): konkreter Anlass (Vortrag, aktuelles Projekt, Veranstaltung) + Verbindung zu Erfahrung. KEIN "Hiermit bewerbe ich mich".
+2. Body (2-3 Absätze): pro Absatz 1-2 Anforderungen aus Ausschreibung + 1-2 konkrete Erfolge aus CV, quantifiziert, mit Tools und Business-Kontext. Sprache der Ausschreibung übernehmen.
+3. Warum du / warum sie / warum jetzt: warum diese Rolle, warum dein WINF-Profil besonders gut passt, warum das Timing passt.
+4. Abschluss: Verfügbarkeit, Dank, professionelle Grußformel.
+
+Stil:
+- DACH: Sie-Form, "Sehr geehrte Frau ...", kein Denglisch
+- International: I-Form, selbstbewusst, kurz & direkt
+
+Tabus:
+- Reiner CV-Umtext in Prosa
+- Falscher Firmenname, Tippfehler
+- Buzzword-Bingo (results-driven, team player, synergy, leverage, utilize)
+- Unbearbeitete AI-Standardphrasen
+    ]]></content>
+  </section>
+
+  <section id="ats_ai">
+    <title>ATS- und KI-Optimierung</title>
+    <content><![CDATA[
+Konkrete Regeln:
+- PDF mit Text (keine Scans/Bilder)
+- Single column, keine Tabellen/Textboxen
+- Standard-Headings (Work Experience, Education, Skills, Certifications)
+- Body 10-11pt, ATS-sichere Fonts
+- Keine wichtigen Infos nur in Header/Footer oder Grafiken
+- Datumsformat konsistent (MM/JJJJ – MM/JJJJ)
+- Keyword-Dichte 2-3% des Textes
+- Begriffe in Langform + Abkürzung: "Business Intelligence (BI)", "Machine Learning (ML)"
+
+AI-Ranking:
+- Natürliche Sätze mit eingebetteten Keywords und Ergebnissen sind optimal
+- Keyword-Listen oder unnatürliche Wiederholungen werden abgestraft
+    ]]></content>
+  </section>
+
+  <section id="ai_nutzung">
+    <title>KI-Nutzung bei CV &amp; CL</title>
+    <content><![CDATA[
+Grundsatz: KI als Co-Pilot, nicht als Ghostwriter.
+
+Erlaubt: Job-Ads analysieren, Bullet-Entwürfe verfeinern, CL sprachlich straffen.
+
+Riskant: Komplett generierte CVs/CLs ohne Anpassung. Manche AI-Firmen erkennen AI-Stil.
+
+Banned Phrases (AI-Marker): "leverage", "utilize", "cutting-edge", "seasoned", "spearheaded", "synergy", "robust", "scalable", "passionate about", "results-driven", "I thrive", "I am eager", "I am excited", "dynamic environment", "fast-paced", "harnessing the power of", "at the forefront of", "strategic vision", "adept at", "well-versed"
+    ]]></content>
+  </section>
+
+  <section id="dateinamen">
+    <title>Dateinamen-Konvention</title>
+    <content><![CDATA[
+Format: Lebenslauf_VornameNachname_Firma_YYYY-MM.pdf, Anschreiben_VornameNachname_Firma_YYYY-MM.pdf
+
+Beispiele:
+- Lebenslauf_Mustermann_FirmaXY_2026-05.pdf
+- Anschreiben_Mustermann_FirmaXY_2026-05.pdf
+
+Begründung: Recruiter laden viele Dateien herunter; aussagekräftige Namen erhöhen Auffindbarkeit und Professionalität.
+    ]]></content>
+  </section>
+</playbook>
